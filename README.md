@@ -1,4 +1,4 @@
-# cautious-happiness
+
 # My First Finance Project
 
 I'm learning how to use GitHub by building a simple
