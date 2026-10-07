@@ -1,0 +1,18 @@
+def future_value(initial_investment, annual_return, years):
+    return initial_investment * (1 + annual_return) ** years
+
+
+initial_investment = 1000
+annual_return = 0.07
+years = 10
+
+result = future_value(
+    initial_investment,
+    annual_return,
+    years
+)
+
+print(f"Initial investment: ${initial_investment:,.2f}")
+print(f"Annual return: {annual_return:.1%}")
+print(f"Years: {years}")
+print(f"Final value: ${result:,.2f}")
