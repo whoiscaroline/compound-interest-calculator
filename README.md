@@ -8,6 +8,10 @@ A lightweight investment scenario playground: explore compound growth, recurring
 
 ## Try it
 
+**[Open the live demo →](https://whoiscaroline.github.io/finance-python-application/)**
+
+![Return Lab interface](preview.png)
+
 Download the project and open **index.html** in a browser. For scenario links and the best clipboard support, serve it locally:
 
 ```sh
