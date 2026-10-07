@@ -1,0 +1,15 @@
+const assert = require('node:assert/strict');
+const {simulate} = require('./model');
+const run = overrides => simulate({initial:1000,monthly:300,years:20,rate:7,inflation:2.5,...overrides}).at(-1);
+const close = (a,b) => assert.ok(Math.abs(a-b)<1e-6,`${a} != ${b}`);
+close(run({monthly:0,years:10,inflation:0}).nominal,1000*1.07**10);
+close(run({rate:0}).nominal,1000+300*240);
+close(run({inflation:0}).real,run({inflation:0}).nominal);
+assert.ok(run({rate:-5}).nominal<run({rate:0}).nominal);
+assert.ok(run().real<run().nominal);
+const r=1.07**(1/12)-1;
+close(run().nominal,1000*(1+r)**240+300*((1+r)**240-1)/r);
+assert.throws(()=>run({years:2.5}));
+assert.throws(()=>run({rate:-100}));
+assert.throws(()=>run({initial:NaN}));
+console.log('Model checks passed: closed forms, zero return, inflation, negative returns, invalid inputs.');

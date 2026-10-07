@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explore compound growth, monthly contributions, and inflation. A free, private investment scenario playground.">
+  <title>Return Lab · Give time a number</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><a class="brand" href="./"><span class="mark">↗</span> RETURN LAB</a><span class="header-note">A small experiment in long-term thinking</span><button id="theme" class="quiet" aria-label="Toggle light and dark theme">◐ Theme</button></header>
+  <main>
+    <section class="hero"><span class="eyebrow">COMPOUNDING, WITHOUT THE SPREADSHEET</span><h1>Give time<br>a <em>number.</em></h1><p>What could a little consistency become?<br>Explore the money you put in, the growth you assume,<br class="desktop"> and what inflation leaves behind.</p></section>
+    <section class="workspace" aria-label="Investment scenario calculator">
+      <aside class="controls"><div class="section-title"><span>01 / YOUR SCENARIO</span><span class="dot"></span></div>
+        <label for="initial">Starting amount <span>USD</span></label><input id="initial" type="number" min="0" max="100000000" step="100" value="1000">
+        <label for="monthly">Monthly contribution <span>USD</span></label><input id="monthly" type="number" min="0" max="1000000" step="25" value="300">
+        <label for="years">Time horizon <output id="years-out">20 years</output></label><input id="years" type="range" min="1" max="60" value="20">
+        <label for="rate">Annual return <output id="rate-out">7.0%</output></label><input id="rate" type="range" min="-10" max="20" step="0.5" value="7">
+        <label for="inflation">Annual inflation <output id="inflation-out">2.5%</output></label><input id="inflation" type="range" min="0" max="10" step="0.5" value="2.5">
+        <div class="presets"><span class="tiny">TRY A DIFFERENT STORY</span><button data-preset="student">Student start</button><button data-preset="steady">Steady builder</button><button data-preset="early">Start early</button></div>
+        <p class="fine">Illustrative assumptions, not return forecasts. Contributions enter at the end of each month.</p>
+      </aside>
+      <article class="results"><div class="section-title"><span>02 / THE POSSIBILITIES</span><label class="toggle"><input type="checkbox" id="real"> Today's dollars</label></div>
+        <div class="headline"><span id="value-label" class="tiny">PROJECTED BALANCE</span><strong id="balance" aria-live="polite">—</strong><p id="summary"></p></div>
+        <div class="chart-wrap"><svg id="chart" viewBox="0 0 760 290" role="img" aria-label="Chart of contributions and projected investment balances"></svg></div>
+        <div class="legend"><span><i class="green"></i> Your scenario</span><span><i class="gray"></i> Contributions</span><span><i class="dash"></i> Return ±2 percentage points</span></div>
+        <div class="metrics"><div><span>Money contributed</span><strong id="contributed"></strong></div><div><span>Nominal investment gain</span><strong id="gain"></strong></div><div><span>Inflation-adjusted balance</span><strong id="real-value"></strong></div></div>
+        <div id="insight" class="insight"></div>
+        <div class="actions"><button id="share">↗ Copy scenario link</button><button id="export" class="quiet">↓ Export CSV</button><span id="status" role="status"></span></div>
+      </article>
+    </section>
+    <section class="notes"><div><span class="eyebrow">WHY IT MOVES</span><h2>Small inputs.<br>Different futures.</h2></div><p>The curves use a constant effective annual return, converted to a monthly rate. The outer lines change your assumed return by two percentage points. They are sensitivity scenarios, not probabilities or confidence intervals.</p><p>“Today's dollars” discounts future balances by your inflation assumption. Contributions stay fixed in nominal dollars. Taxes, fees, and market volatility are excluded. Real investing is less smooth than these lines.</p></section>
+  </main><footer><span>RETURN LAB / An open-source learning project</span><span>No login. No tracking. Calculations stay in your browser.</span></footer>
+  <script src="model.js"></script><script src="app.js"></script>
+</body></html>
